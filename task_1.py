@@ -39,6 +39,6 @@ def clean_sentences(data):
         text = ' '.join(text)
 
         all_text.append(text)
-    return all_text, data  
+    return all_text, data
 
-print(clean_sentences(data))
+
