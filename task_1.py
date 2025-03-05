@@ -5,6 +5,8 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.feature_extraction.text import CountVectorizer
+import nltk
+nltk.download('wordnet')
 
 import re
 from nltk.stem import WordNetLemmatizer
@@ -37,6 +39,6 @@ def clean_sentences(data):
         text = ' '.join(text)
 
         all_text.append(text)
-    return all_text, data  
+    return all_text, data
 
-print(clean_sentences(data))
+
