@@ -53,5 +53,25 @@ def target_score_to_expression(data):
         
     return y
 
+def target_score_to_n(data):
+    y_n = data["Reviewer_Score"].values
+    y = []
+    for value in y_n:
+        if value < 5:
+            y.append(0)
+        else:
+            y.append(1)
+            
+    return y
+
 def prepare_nlp(data):
     return combine_reviews(data), target_score_to_expression(data)
+
+def prepare_lstm(data):
+    return combine_reviews(data), target_score_to_n(data)
+
+def prepare_knn(data):
+    return data
+
+def prepare_cnn(data):
+    return data

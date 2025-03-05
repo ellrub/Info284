@@ -7,10 +7,10 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.metrics import classification_report, confusion_matrix
 
-from prepare_data import clean_sentences
+from prepare_data import clean_sentences, combine_reviews
 
 # Load the CSV file
-csv_data = '/Users/ruben/Development/Info284/data/DATASET_REDUX.csv'
+csv_data = 'Info284/data/DATASET_REDUX.csv' # Changed for each machine.
 data = pd.read_csv(csv_data)
 
 # Extract the relevant columns
@@ -22,7 +22,7 @@ reviews = positive_reviews + negative_reviews
 labels = [1] * len(positive_reviews) + [0] * len(negative_reviews)
 
 # Clean the reviews
-cleaned_reviews, _ = clean_sentences(pd.Series(reviews))
+cleaned_reviews = clean_sentences(pd.Series(reviews))
 
 # Tokenize the data
 tokenizer = Tokenizer(num_words = 5000)
@@ -54,12 +54,12 @@ model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accu
 model.fit(X_train, y_train, epochs = 10, batch_size = 32, validation_data=(X_val, y_val))
 
 # Save the model in the recommended Keras format
-model.save('data/model/sentiment_lstm_model.keras')
+model.save('Info284/data/model/sentiment_lstm_model.keras')
 
 print("Model training complete and saved as 'data/model/sentiment_lstm_model.keras'")
 
 # Load the model
-model = load_model('data/model/sentiment_lstm_model.keras')
+model = load_model('Info284\data\modelsentiment_lstm_model.keras')
 
 # Evaluate the model on the validation set
 val_predictions = model.predict(X_val)
