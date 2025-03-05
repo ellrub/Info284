@@ -1,6 +1,9 @@
 # Importing the default libraries and functions for our models.
 import nltk
 nltk.download('wordnet')
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+stop_words = set(stopwords.words('english'))
 
 import re
 from nltk.stem import WordNetLemmatizer
@@ -27,7 +30,7 @@ def clean_sentences(data):
         # Lemmatization
         text = text.split()
 
-        text = [stemmer.lemmatize(word) for word in text]
+        text = [stemmer.lemmatize(word) for word in text if word not in (stop_words)]
         text = ' '.join(text)
 
         all_text.append(text)
@@ -57,10 +60,12 @@ def target_score_to_n(data):
     y_n = data["Reviewer_Score"].values
     y = []
     for value in y_n:
-        if value < 5:
+        if value < 4:
             y.append(0)
-        else:
+        elif value < 8:
             y.append(1)
+        else:
+            y.append(2)
             
     return y
 
