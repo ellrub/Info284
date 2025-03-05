@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.metrics import classification_report, confusion_matrix
 
-from task_1 import clean_sentences
+from prepare_data import clean_sentences
 
 # Load the CSV file
 csv_data = '/Users/ruben/Development/Info284/data/DATASET_REDUX.csv'
