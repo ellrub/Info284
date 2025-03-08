@@ -9,5 +9,5 @@ def csvReduxxion(_sPath, _sPathNew, _nSizeNew, _nRandomState, _sEncoding = "utf-
 # csvReduxxion("../../Hotel_Reviews.csv", "../../Hotel_Reviews_small.csv", 256, 1);
 
 # csvReduxxion("data/Hotel_Reviews.csv", "data/DATASET_REDUX.csv", 1000, random.randint(0, 1000));
-csvReduxxion("data/Hotel_Reviews.csv", "data/DATASET_REDUX.csv", 5000, random.randint(0, 1000));
+csvReduxxion("../data/Hotel_Reviews.csv", "../data/DATASET_REDUX.csv", 5000, random.randint(0, 1000));
 
