@@ -14,12 +14,24 @@ csv_data = 'Info284/data/DATASET_REDUX.csv' # Changed for each machine.
 data = pd.read_csv(csv_data)
 
 # Extract the relevant columns
-positive_reviews = data['Positive_Review'].tolist()
-negative_reviews = data['Negative_Review'].tolist()
+# positive_reviews = data['Positive_Review'].tolist()
+# negative_reviews = data['Negative_Review'].tolist()
+# review_score = data['Reviewer_Score'].tolist()
+positive_reviews = []
+negative_reviews = []
+neutral_reviews = []
+for review in data:
+    if data['Reviewer_Score'] >= 8:
+        positive_reviews.append(data['Positive_Review'])
+    elif data['Reviewer_Score'] >= 4:
+        negative_reviews.append(data['Negative_Review'])
+    else:
+        neutral_reviews = data['Positive_Review'].tolist() + data['Negative_Review'].tolist()
+
 
 # Combine the reviews and create labels
-reviews = positive_reviews + negative_reviews
-labels = [1] * len(positive_reviews) + [0] * len(negative_reviews)
+reviews = positive_reviews + negative_reviews + neutral_reviews
+labels = [0] * len(negative_reviews) + [1] * len(neutral_reviews) + [2] * len(positive_reviews)
 
 # Clean the reviews
 cleaned_reviews = clean_sentences(pd.Series(reviews))
