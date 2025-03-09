@@ -32,8 +32,8 @@ result = data.apply(review_splitting, axis = 1)
 labels = [0] * len(negative_reviews) + [1] * len(neutral_reviews) + [2] * len(positive_reviews)
 
 
-# # Clean the reviews
-# cleaned_reviews = clean_sentences(pd.Series(reviews))
+# Clean the reviews
+cleaned_reviews = clean_sentences(pd.Series(reviews))
 
 # # Tokenize the data
 # tokenizer = Tokenizer(num_words = 5000)
