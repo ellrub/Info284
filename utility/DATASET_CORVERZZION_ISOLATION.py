@@ -4,8 +4,8 @@ def csvConverzzion(_Path, _sPathNew, _useCols = ["Negative_Review", "Positive_Re
     _dataset = pandas.read_csv(_Path, usecols = _useCols)
     _mergedReviews = []
     for i in _dataset.to_numpy():
-        _mergedReviews.append([ i[2], i[0] + i[1] ])
-    pandas.DataFrame(_mergedReviews).to_csv(_sPathNew, encoding = _sEncoding)
+        _mergedReviews.append([ i[2], i[0], i[1] ])
+    pandas.DataFrame(_mergedReviews, columns = ["Reviewer_Score", "Negative_Review", "Positive_Review"]).to_csv(_sPathNew, encoding = _sEncoding)
 
 
 def dataframeToCsvConverzzion(_dataset, _sPathNew, _sEncoding = "utf-8"):
@@ -23,3 +23,4 @@ def dataframeConverzzion(_dataset):
 
 # dataset = pandas.read_csv("Info284/data/Hotel_Reviews_small.csv", usecols=["Negative_Review", "Positive_Review", "Reviewer_Score"])
 # csvTextMergeThing(dataset, "../../Hotel_Reviews_smaller_very_smol.csv")
+csvConverzzion('../data/Hotel_Reviews.csv', "../data/NEWHotel_Reviews_Reduced.csv")
