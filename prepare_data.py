@@ -5,6 +5,8 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
 
+import pandas as pd
+
 import re
 from nltk.stem import WordNetLemmatizer
 
@@ -41,7 +43,7 @@ def combine_reviews(data):
     X = []
     for n in range(len(X_1)):
         X.append(X_1[n] + " " + X_2[n])
-    return X
+    return pd.array(X)
 
 def target_score_to_expression(data):
     y_n = data["Reviewer_Score"].values
@@ -54,19 +56,19 @@ def target_score_to_expression(data):
         else:
             y.append("positive")
         
-    return y
+    return pd.array(y, dtype='object')
 
 def target_score_to_n(data):
     y_n = data["Reviewer_Score"].values
     y = []
     for value in y_n:
         if value < 4:
-            y.append(0)
+            y.append([1, 0, 0])
         elif value < 8:
-            y.append(1)
+            y.append([0, 1, 0])
         else:
-            y.append(2)
-            
+            y.append([0, 0, 1])
+               
     return y
 
 def prepare_nlp(data):
