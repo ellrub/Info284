@@ -23,4 +23,4 @@ def dataframeConverzzion(_dataset):
 
 # dataset = pandas.read_csv("Info284/data/Hotel_Reviews_small.csv", usecols=["Negative_Review", "Positive_Review", "Reviewer_Score"])
 # csvTextMergeThing(dataset, "../../Hotel_Reviews_smaller_very_smol.csv")
-csvConverzzion('../data/Hotel_Reviews.csv', "../data/NEWHotel_Reviews_Reduced.csv")
+csvConverzzion('../data/Hotel_Reviews.csv', "../data/Hotel_Reviews_Reduced.csv")
