@@ -37,7 +37,6 @@ def save_markdown(markdown_content, output_file="extracted_markdown.md"):
     try:
         with open(output_file, 'w', encoding='utf-8') as f:
             for i, content in enumerate(markdown_content):
-                f.write(f"--- Markdown Cell {i+1} ---\n")
                 if isinstance(content, list):
                     f.write("".join(content))
                 else:
